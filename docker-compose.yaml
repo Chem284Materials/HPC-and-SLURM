@@ -1,0 +1,49 @@
+services:
+  slurmjupyter:
+        image: slurm-jupyter-hpc
+        hostname: slurmjupyter
+        user: admin
+        volumes:
+                - ./files:/home/admin/shared
+        ports:
+                - 8888:8888
+  slurmmaster:
+        image: slurm-master-hpc
+        hostname: slurmmaster
+        user: admin
+        volumes:
+                - ./files:/home/admin/shared
+        ports:
+                - 6817:6817
+                - 6818:6818
+                - 6819:6819
+  slurmnode1:
+        image: slurm-node-hpc
+        hostname: slurmnode1
+        user: admin
+        volumes:
+                - ./files:/home/admin/shared
+        environment:
+                - SLURM_NODENAME=slurmnode1
+        links:
+                - slurmmaster
+  slurmnode2:
+        image: slurm-node-hpc
+        hostname: slurmnode2
+        user: admin
+        volumes:
+                - ./files:/home/admin/shared
+        environment:
+                - SLURM_NODENAME=slurmnode2
+        links:
+                - slurmmaster
+  slurmnode3:
+        image: slurm-node-hpc
+        hostname: slurmnode3
+        user: admin
+        volumes:
+                - ./files:/home/admin/shared
+        environment:
+                - SLURM_NODENAME=slurmnode3
+        links:
+                - slurmmaster
