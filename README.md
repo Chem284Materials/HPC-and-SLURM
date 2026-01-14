@@ -146,3 +146,6 @@ Note: When using sbatch with our code you will need to have the script inside of
 
 ### Extra time
 Try different nodes, cpus-per-task configurations, and a larger or smaller number of poses. How does it scale? Are there any limitations you see?
+
+#### References
+Link to medium article explaining how to set up a docker-compose based [HPC cluster](https://medium.com/analytics-vidhya/slurm-cluster-with-docker-9f242deee601).
